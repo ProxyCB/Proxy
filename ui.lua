@@ -2812,15 +2812,6 @@ function library:Load(options)
 
     services.InputService.MouseIconEnabled = false
 
-    utility.connect(services.RunService.RenderStepped, function()
-        if self.open then
-            local mousepos = services.InputService:GetMouseLocation()
-            cursor.PointA = mousepos
-            cursor.PointB = mousepos + Vector2.new(6, 12)
-            cursor.PointC = mousepos + Vector2.new(6, 12)
-        end
-    end)
-
     local holder = utility.create("Square", {
         Transparency = 0,
         ZIndex = 100,
@@ -2873,6 +2864,27 @@ function library:Load(options)
         ZIndex = 1,
         Visible = false,
     })
+
+    local CoreGui = game:GetService("CoreGui")
+    local ScreenGui = Instance.new("ScreenGui", CoreGui)
+    local MouseButtonThing = Instance.new("TextButton")
+    MouseButtonThing.BackgroundTransparency = 1
+    MouseButtonThing.Size = UDim2.new(999,999,999,999)
+    MouseButtonThing.Modal = true
+    MouseButtonThing.Parent = ScreenGui
+    MouseButtonThing.Text = " "
+
+    utility.connect(services.RunService.RenderStepped, function()
+        if self.open then
+            MouseButtonThing.Visible = true
+            local mousepos = services.InputService:GetMouseLocation()
+            cursor.PointA = mousepos
+            cursor.PointB = mousepos + Vector2.new(6, 12)
+            cursor.PointC = mousepos + Vector2.new(6, 12)
+        else
+            MouseButtonThing.Visible = false
+        end
+    end)
 
     utility.create("Square", {
         Size = UDim2.new(0, sizeX, 0, sizeY),
