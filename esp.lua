@@ -1,7 +1,7 @@
 --[[
     made by siper#9938 and mickey#5612
 ]]
-
+--
 -- main module
 local espLibrary = {
     instances = {},
@@ -17,8 +17,11 @@ local espLibrary = {
         maxScaleFactorX = 10,
         minScaleFactorY = 1,
         maxScaleFactorY = 10,
+        scaleFactorX = 5,
+        scaleFactorY = 6,
         boundingBox = false, -- WARNING | Significant Performance Decrease when true
-        boundingBoxDescending = false,
+        boundingBoxDescending = true,
+        excludedPartNames = {},
         font = 2,
         fontSize = 13,
         limitDistance = false,
@@ -29,18 +32,18 @@ local espLibrary = {
         fillColor = nil,
         whitelistColor = Color3.new(1, 0, 0),
         outOfViewArrows = false,
-        outOfViewArrowsFilled = false,
+        outOfViewArrowsFilled = true,
         outOfViewArrowsSize = 25,
         outOfViewArrowsRadius = 100,
-        outOfViewArrowsColor = Color3.new(1, 1, 1),
+        outOfViewArrowsColor = Color3.fromRGB(255,255,255),
         outOfViewArrowsTransparency = 0.5,
-        outOfViewArrowsOutline = false,
+        outOfViewArrowsOutline = true,
         outOfViewArrowsOutlineFilled = false,
         outOfViewArrowsOutlineColor = Color3.new(1, 1, 1),
         outOfViewArrowsOutlineTransparency = 1,
         names = false,
         nameTransparency = 1,
-        nameColor = Color3.new(1, 1, 1),
+        nameColor = Color3.fromRGB(255,255,255),
         boxes = false,
         boxesTransparency = 1,
         boxesColor = Color3.fromRGB(255,255,255),
@@ -54,17 +57,17 @@ local espLibrary = {
         healthText = false,
         healthTextTransparency = 1,
         healthTextSuffix = "%",
-        healthTextColor = Color3.new(1, 1, 1),
+        healthTextColor = Color3.fromRGB(255,255,255),
         distance = false,
         distanceTransparency = 1,
         distanceSuffix = " Studs",
-        distanceColor = Color3.new(1, 1, 1),
+        distanceColor = Color3.fromRGB(255,255,255),
         tracers = false,
         tracerTransparency = 1,
-        tracerColor = Color3.new(1, 1, 1),
+        tracerColor = Color3.fromRGB(255,255,255),
         tracerOrigin = "Bottom", -- Available [Mouse, Top, Bottom]
         chams = false,
-        chamsFillColor = Color3.fromRGB(255,255,255),
+        chamsFillColor = Color3.new(255,255,255),
         chamsFillTransparency = 0.5,
         chamsOutlineColor = Color3.new(),
         chamsOutlineTransparency = 0
